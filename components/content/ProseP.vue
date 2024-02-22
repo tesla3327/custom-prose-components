@@ -75,6 +75,10 @@ const checkHash = () => {
 };
 
 async function toggleHighlight() {
+  if (hash.value === '') {
+    return;
+  }
+
   if (highlight.value) {
     await navigateTo({ hash: '' }, { replace: true });
   } else {
