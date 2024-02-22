@@ -1,5 +1,13 @@
 # Test Page
 
+## Custom P Component
+
+I made a custom `p` tag that lets you highlight a tag.
+
+Try clicking on any of the paragraphs here, you'll see that they're highlighted.
+
+You may also notice that the route hash changes — we're able to deep-link to a specifically highlighted section of the article.
+
 Hello there _friend_!
 
 We can use all sorts of markdown **styles** to make things happen.
