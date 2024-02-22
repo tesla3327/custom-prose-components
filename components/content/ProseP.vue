@@ -7,7 +7,7 @@
     }"
     @click="toggleHighlight"
   >
-    <p>
+    <p ref="el">
       <slot />
     </p>
   </div>
@@ -42,6 +42,7 @@ const hash = computed(() => {
 const route = useRoute();
 const highlight = ref(false);
 const hide = ref(false);
+const el = ref(null);
 
 // We need to rely entirely on side-effects here because
 // the hash doesn't exist on the server
@@ -54,6 +55,11 @@ watch(
 );
 onMounted(() => {
   checkHash();
+
+  // Scroll to the highlighted element
+  if (highlight.value && el.value) {
+    el.value.scrollIntoView({ behavior: 'smooth' });
+  }
 });
 
 const checkHash = () => {
