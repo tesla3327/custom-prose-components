@@ -3,7 +3,6 @@
     class="cursor-pointer transition-all duration-150 ease-in-out"
     :class="{
       'bg-yellow-100 rounded-md px-3 -mx-3': highlight,
-      'opacity-30 ': hide,
     }"
     @click="toggleHighlight"
   >
