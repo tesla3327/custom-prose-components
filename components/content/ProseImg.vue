@@ -4,8 +4,6 @@
       class="rounded-xl shadow-lg w-full"
       :src="src"
       :alt="alt"
-      :width="width / 4"
-      :height="height / 4"
       @click="toggleLightbox"
     />
   </div>
@@ -19,12 +17,7 @@
       }"
       @click="toggleLightbox"
     >
-      <img
-        :src="src"
-        :alt="alt"
-        :width="width"
-        :height="height"
-      />
+      <img :src="src" :alt="alt" />
     </div>
   </Teleport>
 </template>
@@ -38,14 +31,6 @@ defineProps({
   alt: {
     type: String,
     default: '',
-  },
-  width: {
-    type: [String, Number],
-    default: undefined,
-  },
-  height: {
-    type: [String, Number],
-    default: undefined,
   },
 });
 
