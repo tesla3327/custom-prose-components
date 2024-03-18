@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="$props.filename"
-    class="bg-gray-100 font-mono text-sm border py-2 px-3 rounded-t-md"
+    class="bg-slate-200 font-mono text-sm border border-slate-300 py-2 px-3 rounded-t-md text-black"
   >
     {{ $props.filename }}
   </div>

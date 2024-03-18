@@ -8,7 +8,7 @@
       class="absolute transition-all duration-150 bottom-full left-1/2 transform -translate-x-1/2 w-[400px] opacity-0 group-hover:opacity-100 pointer-events-none"
     >
       <div
-        class="relative bottom-3 w-content bg-white border border-gray-300 py-3 px-4 shadow-lg rounded-lg overflow-auto"
+        class="relative bottom-3 w-content bg-gradient-to-br from-white to-slate-50 border border-gray-300 py-3 px-4 shadow-lg rounded-lg overflow-auto"
       >
         <div class="font-bold">{{ metadata.title }}</div>
         <div>{{ metadata.description }}</div>

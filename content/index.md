@@ -1,3 +1,7 @@
+---
+description: The first page of the blog.
+---
+
 # Test Page
 
 This is just a page to test some things out.

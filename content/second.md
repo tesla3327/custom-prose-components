@@ -8,6 +8,8 @@ description: Another page that you can read stuff on!
 
 I created this page to show off some custom link rendering.
 
+You can [go back to the first page](/).
+
 Pretty cool, huh?
 
 ## What is happening?
