@@ -7,7 +7,7 @@
   </div>
   <pre
     :class="{
-      [$props.class]: true,
+      [$props.class as string]: true,
       'mt-0 rounded-t-none': $props.filename,
     }"
   ><slot /></pre>

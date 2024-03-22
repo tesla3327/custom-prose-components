@@ -38,9 +38,13 @@ const isInternal = computed(() => {
 });
 
 const nuxtApp = useNuxtApp();
+const pathname = computed(() => {
+  // Strip off any query or hash
+  return props.href.split('?')[0].split('#')[0];
+});
 const { data: metadata } = await useAsyncData(
-  props.href,
-  () => queryContent(props.href).findOne(),
+  pathname.value,
+  () => queryContent(pathname.value).findOne(),
   {
     dedupe: 'defer',
     getCachedData(key) {

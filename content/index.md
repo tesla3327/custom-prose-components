@@ -12,6 +12,8 @@ Yes, it's a thing.
 
 Here's a link to the [second page](/second).
 
+A link to the [second page](/second#Cotc) with a highlighted paragraph.
+
 ## Custom P Component
 
 I made a custom `p` tag that lets you highlight a tag.

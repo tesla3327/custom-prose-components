@@ -48,7 +48,6 @@ const el = ref(null);
 watch(
   () => route.hash,
   () => {
-    console.log(route.hash);
     checkHash();
   }
 );
@@ -74,7 +73,12 @@ const checkHash = () => {
   highlight.value = isHighlighted;
 };
 
-async function toggleHighlight() {
+async function toggleHighlight(event) {
+  // Make sure we clicked on a paragraph element
+  if (event.target.tagName !== 'P') {
+    return;
+  }
+
   if (hash.value === '') {
     return;
   }
