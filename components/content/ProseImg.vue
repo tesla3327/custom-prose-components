@@ -1,10 +1,13 @@
 <template>
   <div class="p-2 md:-mx-8 lg:-mx-16">
-    <img
+    <NuxtImg
       class="rounded-xl shadow-lg w-full"
       :src="src"
       :alt="alt"
       @click.stop="toggleLightbox"
+      width="800"
+      sizes="sm:600px md:800px"
+      densities="x1 x2"
     />
   </div>
   <Teleport to="body">
@@ -17,7 +20,13 @@
       }"
       @click.stop="toggleLightbox"
     >
-      <img :src="src" :alt="alt" />
+      <NuxtImg
+        :src="src"
+        :alt="alt"
+        width="6000"
+        sizes="sm:600px md:800px lg:1600px xl:6000px"
+        densities="x1 x2"
+      />
     </div>
   </Teleport>
 </template>

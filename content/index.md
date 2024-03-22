@@ -28,13 +28,15 @@ We can use all sorts of markdown **styles** to make things happen.
 
 Here's a link to [my website](https://michaelnthiessen.com).
 
+This one [links to the Vue website](https://vuejs.org), and this one [links to the Nuxt website](https://nuxt.com).
+
 ## Some Random Images
 
-Here is a picture of something nature like. Maybe it will be a mountain or a forest.
-![](https://source.unsplash.com/random/1600x1200/?nature)
+Here's a picture of the Scottish Highlands:
+![](https://source.unsplash.com/green-field-under-white-cloudy-sky-UiE-kcDnIGs/6000x4000)
 
-The next picture is going to be a car. It's random, so hopefully we get a good one.
-![](https://source.unsplash.com/random/1600x1200/?car)
+The next picture is of a car:
+![](https://source.unsplash.com/blue-volkswagen-beetle-on-grass-field-7HNftpNvqho/6000x4000)
 
 This last picture is of a city.
 
@@ -46,7 +48,7 @@ I could have also used ChatGPT, but no one would like that — not even my moth
 
 So, here's a city picture.
 
-![](https://source.unsplash.com/random/1600x1200/?city)
+![](https://source.unsplash.com/aerial-photograph-of-cityscape-ErccHKWjG18/6000x4000)
 
 ## What is happening?
 

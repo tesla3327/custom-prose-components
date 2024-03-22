@@ -5,7 +5,12 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
+    '@nuxt/image',
   ],
+
+  image: {
+    domains: ['source.unsplash.com', 'www.google.com'],
+  },
 
   content: {
     highlight: {

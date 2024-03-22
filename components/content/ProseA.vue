@@ -14,9 +14,22 @@
         <div>{{ metadata.description }}</div>
       </div>
     </div>
-    <span v-else class="text-xs text-gray-500 font-bold">
-      ↗
-    </span>
+    <template
+      v-else-if="!isInternal"
+      class="text-xs text-gray-500 font-bold"
+    >
+      <NuxtImg
+        v-if="!showFallbackFavicon"
+        class="inline-block -top-[1px] ml-1 relative not-prose"
+        :src="faviconUrl"
+        @error="showFallbackFavicon = true"
+        width="16"
+        height="16"
+      />
+      <span class="text-sm ml-1" v-if="showFallbackFavicon">
+        ↗
+      </span>
+    </template>
   </div>
 </template>
 
@@ -55,4 +68,10 @@ const { data: metadata } = await useAsyncData(
     },
   }
 );
+
+const showFallbackFavicon = ref(false);
+const faviconUrl = computed(() => {
+  const hostname = new URL(props.href).hostname;
+  return `https://www.google.com/s2/favicons?domain=${hostname}`;
+});
 </script>
