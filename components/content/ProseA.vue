@@ -1,5 +1,5 @@
 <template>
-  <div class="group inline relative z-0">
+  <div class="group inline relative z-0 cursor-pointer">
     <NuxtLink :href="href" :target="target">
       <slot />
     </NuxtLink>
@@ -12,6 +12,12 @@
       >
         <div class="font-bold">{{ metadata.title }}</div>
         <div>{{ metadata.description }}</div>
+        <div
+          v-if="linkedParagraph"
+          class="bg-yellow-100 rounded-md px-3 -mx-3 mt-4 italic"
+        >
+          {{ linkedParagraph }}
+        </div>
       </div>
     </div>
     <template
@@ -68,6 +74,45 @@ const { data: metadata } = await useAsyncData(
     },
   }
 );
+
+// Recursive function to get all text values
+function getTextFromNode(node) {
+  return (
+    node.children
+      .flatMap((child) => {
+        if (child.type === 'text') {
+          return child.value;
+        } else {
+          return getTextFromNode(child);
+        }
+      })
+      .join(' ')
+      // Fix double spaces
+      .replaceAll('  ', ' ')
+      .replaceAll(' .', '.')
+  );
+}
+
+// Figure out what paragraph the hash is highlighting
+const linkedParagraph = computed(() => {
+  if (props.href.includes('?')) {
+    const hash = props.href.split('?').at(-1);
+    const paragraphs = metadata.value.body.children
+      .filter(({ tag }) => tag === 'p')
+      .map(getTextFromNode);
+
+    const p = paragraphs.find((p) => {
+      const pHash = p
+        .split(' ')
+        .map((word) => word[0])
+        .join('');
+
+      return hash.includes(pHash);
+    });
+
+    return p;
+  }
+});
 
 const showFallbackFavicon = ref(false);
 const faviconUrl = computed(() => {

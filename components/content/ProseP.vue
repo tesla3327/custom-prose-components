@@ -2,7 +2,7 @@
   <div
     class="cursor-pointer transition-all duration-150 ease-in-out"
     :class="{
-      'bg-yellow-100 rounded-md px-3 -mx-3': highlight,
+      'bg-yellow-100 rounded-md px-3 -mx-3': isHighlighted,
     }"
     @click="toggleHighlight"
   >
@@ -39,14 +39,13 @@ const hash = computed(() => {
 });
 
 const route = useRoute();
-const highlight = ref(false);
-const hide = ref(false);
+const isHighlighted = ref(false);
 const el = ref(null);
 
 // We need to rely entirely on side-effects here because
 // the hash doesn't exist on the server
 watch(
-  () => route.hash,
+  () => route.query,
   () => {
     checkHash();
   }
@@ -55,22 +54,14 @@ onMounted(() => {
   checkHash();
 
   // Scroll to the highlighted element
-  if (highlight.value && el.value) {
+  if (isHighlighted.value && el.value) {
     el.value.scrollIntoView({ behavior: 'smooth' });
   }
 });
 
 const checkHash = () => {
-  const isHighlighted = (highlight.value =
-    route.hash === `#${hash.value}`);
-
-  if (!isHighlighted && route.hash) {
-    hide.value = true;
-  } else {
-    hide.value = false;
-  }
-
-  highlight.value = isHighlighted;
+  isHighlighted.value =
+    route.query.highlight === hash.value;
 };
 
 async function toggleHighlight(event) {
@@ -83,15 +74,15 @@ async function toggleHighlight(event) {
     return;
   }
 
-  if (highlight.value) {
-    await navigateTo({ hash: '' }, { replace: true });
+  if (isHighlighted.value) {
+    isHighlighted.value = false;
+    await navigateTo({ replace: true });
   } else {
+    isHighlighted.value = true;
     await navigateTo(
-      { hash: `#${hash.value}` },
+      { query: { highlight: hash.value } },
       { replace: true }
     );
   }
-
-  checkHash();
 }
 </script>
