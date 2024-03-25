@@ -16,27 +16,23 @@
 // Get a "hash" of the content
 const slots = useSlots();
 const hash = computed(() => {
-  return (
-    slots
-      // Get the default slot
-      .default()
-
-      // Get the text from each node
-      .map((slot) => {
-        return slot.children;
-      })
-      .filter((text) => typeof text === 'string')
-
-      // Combine the first letters of each word
-      .map((text) =>
-        text
-          .split(' ')
-          .map((word) => word[0])
-          .join('')
-      )
-      .join('')
-  );
+  return slots
+    .default()
+    .map(getTextFromVNode)
+    .join('')
+    .split(' ')
+    .map((word) => word[0])
+    .join('');
 });
+
+function getTextFromVNode(vnode) {
+  if (typeof vnode.children === 'string') {
+    return vnode.children;
+  } else if (vnode.children.default) {
+    const nodes = vnode.children.default();
+    return nodes.map(getTextFromVNode).join('');
+  }
+}
 
 const route = useRoute();
 const isHighlighted = ref(false);
