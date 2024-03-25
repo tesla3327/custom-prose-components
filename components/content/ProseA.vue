@@ -72,6 +72,8 @@ const { data: metadata } = await useAsyncData(
 const showFallbackFavicon = ref(false);
 const faviconUrl = computed(() => {
   const hostname = new URL(props.href).hostname;
-  return `https://www.google.com/s2/favicons?domain=${hostname}`;
+  return encodeURI(
+    `https://www.google.com/s2/favicons?domain=${hostname}`
+  );
 });
 </script>
