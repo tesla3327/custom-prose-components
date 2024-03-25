@@ -9,6 +9,7 @@ export default defineNuxtConfig({
 
   image: {
     domains: ['source.unsplash.com', 'www.google.com'],
+    provider: 'ipx',
   },
 
   content: {
